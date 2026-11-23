@@ -114,6 +114,8 @@ def main():
         except Exception:
             continue
         exam, year, tail, paper = meta(f.stem)
+        if exam != "JEE Advanced":
+            continue
         stats["files"] += 1
         raw_pages = data.get("pages", [])
         page_texts = [clean(p.get("text", "")) for p in raw_pages]
