@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-23T16:50:21Z",
+  "generated_utc": "2026-11-23T16:56:29Z",
   "policy": "Official-source PDFs only. Native text and OCR page text are unverified source transcription, not a verified question/answer database.",
-  "count_downloaded": 79,
+  "count_downloaded": 60,
   "papers": [
     {
       "url": "https://jeeadv.ac.in/past_qps/2007_1.pdf",
@@ -19,7 +19,7 @@
       "sha256": "6ac8408e2d9d735159dbcff0461d9e673b01032a63fb32a1006e0c8d716b1cae",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:00Z"
+      "retrieved_utc": "2026-11-23T16:55:07Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2007_2.pdf",
@@ -36,7 +36,7 @@
       "sha256": "1149bf2e4d02eb46c1fdc89704bd611feae82fd7e8074c6f8a837a4a1f9d66a4",
       "page_count": 28,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:01Z"
+      "retrieved_utc": "2026-11-23T16:55:08Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2008_1.pdf",
@@ -53,7 +53,7 @@
       "sha256": "fb027c6b88c31a67da5c7d7a20c5e7344bc64ae9006876c11221ed2560364527",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:02Z"
+      "retrieved_utc": "2026-11-23T16:55:09Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2008_2.pdf",
@@ -70,7 +70,7 @@
       "sha256": "c520afb15964cd7f59bbd642e7e5beb9003894d48f2ee4d1357b23c59368805f",
       "page_count": 28,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:03Z"
+      "retrieved_utc": "2026-11-23T16:55:10Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2009_1.pdf",
@@ -87,7 +87,7 @@
       "sha256": "97ff601dc4db9409a917012d66113398c2ec40afa28cc3af64fc0f99ee067051",
       "page_count": 19,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:04Z"
+      "retrieved_utc": "2026-11-23T16:55:11Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2009_2.pdf",
@@ -104,7 +104,7 @@
       "sha256": "950595581c1a4576d01eb18b9cc6af4e5919edb7fc9f2d9a36b280b3e74ddbec",
       "page_count": 17,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:05Z"
+      "retrieved_utc": "2026-11-23T16:55:12Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2010_1.pdf",
@@ -121,7 +121,7 @@
       "sha256": "2e685bb2d93da6b8fd8f713ca8b59e88c40c06d3baf7e109805601326867b02e",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:06Z"
+      "retrieved_utc": "2026-11-23T16:55:13Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2010_2.pdf",
@@ -138,7 +138,7 @@
       "sha256": "d2d066f1fbaf4824a93056e88742ac51d31bf452c012bf9e69978430faad2dbf",
       "page_count": 22,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:07Z"
+      "retrieved_utc": "2026-11-23T16:55:14Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2011_1.pdf",
@@ -155,7 +155,7 @@
       "sha256": "01fd6b9b2b22b7d03514594c890aebfc522cdf6f88e4fddea4048c56674ce1e2",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:08Z"
+      "retrieved_utc": "2026-11-23T16:55:15Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2011_2.pdf",
@@ -172,7 +172,7 @@
       "sha256": "7424b1856832769c8640f4f4d47727a95531380a03726ca99d5510c3d4b4984a",
       "page_count": 26,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:09Z"
+      "retrieved_utc": "2026-11-23T16:55:16Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2012_1.pdf",
@@ -189,7 +189,7 @@
       "sha256": "a6e2eb4354717bf43582b9327efe217db8cf756ba2ff72e418bed0ff73ca8cab",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:10Z"
+      "retrieved_utc": "2026-11-23T16:55:17Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2012_2.pdf",
@@ -206,7 +206,7 @@
       "sha256": "03df348b61083db4ae5c7db78908f3f1d6a0b7361a1800bfc1a5154cd09de478",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:11Z"
+      "retrieved_utc": "2026-11-23T16:55:18Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2013_1.pdf",
@@ -223,7 +223,7 @@
       "sha256": "896aa077e9a16a8b71dfc4b54272dd23f28915a94df07a86a7eaf018a1dbd168",
       "page_count": 40,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:12Z"
+      "retrieved_utc": "2026-11-23T16:55:19Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2013_2.pdf",
@@ -240,7 +240,7 @@
       "sha256": "8f13e2ce46120c28a4be78577f59a24130f504309e27aebf74831c3f86887f7a",
       "page_count": 40,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:13Z"
+      "retrieved_utc": "2026-11-23T16:55:20Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2014_1.pdf",
@@ -257,7 +257,7 @@
       "sha256": "01116559aeeaae65caeb90c9b02274b961e97d68a3ea22a57cd7d44685a75206",
       "page_count": 25,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:14Z"
+      "retrieved_utc": "2026-11-23T16:55:21Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2014_2.pdf",
@@ -274,7 +274,7 @@
       "sha256": "ed3980423dd950ff3c8c24f7847242613f1de9e87f3d1fab180de5faf4c37963",
       "page_count": 38,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:15Z"
+      "retrieved_utc": "2026-11-23T16:55:22Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2015_1.pdf",
@@ -291,7 +291,7 @@
       "sha256": "9c6d7185c48e195c3da76fed4229a4fb552795f5f68553a63b46c7f4bfba478f",
       "page_count": 29,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:16Z"
+      "retrieved_utc": "2026-11-23T16:55:23Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2015_2.pdf",
@@ -308,7 +308,7 @@
       "sha256": "eea767abd87818f30fee413455dfeddde206671e14a3a64fd14d6ffd35055837",
       "page_count": 29,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:17Z"
+      "retrieved_utc": "2026-11-23T16:55:24Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2016_1.pdf",
@@ -325,7 +325,7 @@
       "sha256": "9fee74444cc8c5ece55b4c8a9c8b2013de37bdc3b230314b0fa43f9861739c1b",
       "page_count": 29,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:18Z"
+      "retrieved_utc": "2026-11-23T16:55:25Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2016_2.pdf",
@@ -342,7 +342,7 @@
       "sha256": "de782262250ee997d05db5f7720427ae3788dccffcb11deb58b6031d4e152e60",
       "page_count": 29,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:19Z"
+      "retrieved_utc": "2026-11-23T16:55:26Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2017_1.pdf",
@@ -371,7 +371,7 @@
       "sha256": "624e95110d7b7cfcca7a199989bda9ff8516bc6e7b7e26d40e89d0a981eaf47c",
       "page_count": 32,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:22Z"
+      "retrieved_utc": "2026-11-23T16:55:29Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2018_1.pdf",
@@ -388,7 +388,7 @@
       "sha256": "aec96af9d9e03b865a799ba09ef859834edb852b43d40b84abfabed3ae152e3c",
       "page_count": 32,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:23Z"
+      "retrieved_utc": "2026-11-23T16:55:30Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2018_2.pdf",
@@ -405,7 +405,7 @@
       "sha256": "18ba400526a46d56e12e347effb701c89514f8336c2c28ebe0f6e8f3d9ab11ef",
       "page_count": 33,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:24Z"
+      "retrieved_utc": "2026-11-23T16:55:31Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2019_1_English.pdf",
@@ -422,7 +422,7 @@
       "sha256": "8b5167727ed2c648b89f16b42e10bb127cc3fb34160dfe0fd69c2f211a4e575d",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:25Z"
+      "retrieved_utc": "2026-11-23T16:55:32Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2019_2_English.pdf",
@@ -439,7 +439,7 @@
       "sha256": "6f0b33b30a3dcad6a13676abc4d538d88176e420703cae7adda19102fc22c849",
       "page_count": 33,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:26Z"
+      "retrieved_utc": "2026-11-23T16:55:33Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2019_1_Hindi.pdf",
@@ -456,7 +456,7 @@
       "sha256": "8b5167727ed2c648b89f16b42e10bb127cc3fb34160dfe0fd69c2f211a4e575d",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:27Z"
+      "retrieved_utc": "2026-11-23T16:55:34Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2019_2_Hindi.pdf",
@@ -473,7 +473,7 @@
       "sha256": "6f0b33b30a3dcad6a13676abc4d538d88176e420703cae7adda19102fc22c849",
       "page_count": 33,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:28Z"
+      "retrieved_utc": "2026-11-23T16:55:35Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2020_1_English.pdf",
@@ -490,7 +490,7 @@
       "sha256": "b8327cd3cb9d1df1ca1b6a60d9a2848516d4784dbcea3985e9e46074d475652e",
       "page_count": 27,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:29Z"
+      "retrieved_utc": "2026-11-23T16:55:36Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2020_2_English.pdf",
@@ -507,7 +507,7 @@
       "sha256": "9e94582a59f5429f5cfd632d707599f397241851d446188fd2e2906a95767f8b",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:30Z"
+      "retrieved_utc": "2026-11-23T16:55:37Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2020_1_Hindi.pdf",
@@ -524,7 +524,7 @@
       "sha256": "b8327cd3cb9d1df1ca1b6a60d9a2848516d4784dbcea3985e9e46074d475652e",
       "page_count": 27,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:31Z"
+      "retrieved_utc": "2026-11-23T16:55:38Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2020_2_Hindi.pdf",
@@ -541,7 +541,7 @@
       "sha256": "9e94582a59f5429f5cfd632d707599f397241851d446188fd2e2906a95767f8b",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:32Z"
+      "retrieved_utc": "2026-11-23T16:55:39Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2021_1_English.pdf",
@@ -558,7 +558,7 @@
       "sha256": "7b44a1f432ef43f629ebfdf935a87a44eada44a8755a1cbf0a41486b995edced",
       "page_count": 33,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:33Z"
+      "retrieved_utc": "2026-11-23T16:55:40Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2021_2_English.pdf",
@@ -575,7 +575,7 @@
       "sha256": "85e0104f5caead9b925300fd4afc14470a41a16a0c93a26bf74cc9a3269ddfa3",
       "page_count": 34,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:34Z"
+      "retrieved_utc": "2026-11-23T16:55:41Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2021_1_Hindi.pdf",
@@ -592,7 +592,7 @@
       "sha256": "7b44a1f432ef43f629ebfdf935a87a44eada44a8755a1cbf0a41486b995edced",
       "page_count": 33,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:35Z"
+      "retrieved_utc": "2026-11-23T16:55:42Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2021_2_Hindi.pdf",
@@ -609,7 +609,7 @@
       "sha256": "85e0104f5caead9b925300fd4afc14470a41a16a0c93a26bf74cc9a3269ddfa3",
       "page_count": 34,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:36Z"
+      "retrieved_utc": "2026-11-23T16:55:43Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2022_1_English.pdf",
@@ -626,7 +626,7 @@
       "sha256": "18c3dfc8db5cfce97fcf8800de549e2dafc9dce4fa73b01d6f6e07954f1af1f1",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:37Z"
+      "retrieved_utc": "2026-11-23T16:55:44Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2022_2_English.pdf",
@@ -643,7 +643,7 @@
       "sha256": "746585af9ba6abfa9b8d7cb2e1cf1b863487613fe09955e469ffc290a4d3673a",
       "page_count": 29,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:38Z"
+      "retrieved_utc": "2026-11-23T16:55:45Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2022_1_Hindi.pdf",
@@ -660,7 +660,7 @@
       "sha256": "18c3dfc8db5cfce97fcf8800de549e2dafc9dce4fa73b01d6f6e07954f1af1f1",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:39Z"
+      "retrieved_utc": "2026-11-23T16:55:46Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2022_2_Hindi.pdf",
@@ -677,7 +677,7 @@
       "sha256": "746585af9ba6abfa9b8d7cb2e1cf1b863487613fe09955e469ffc290a4d3673a",
       "page_count": 29,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:40Z"
+      "retrieved_utc": "2026-11-23T16:55:47Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2023_1_English.pdf",
@@ -694,7 +694,7 @@
       "sha256": "ac5916f05cc768c8065bf54d4b1cbb07688881a5734303c68b7639796c21c963",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:41Z"
+      "retrieved_utc": "2026-11-23T16:55:48Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2023_2_English.pdf",
@@ -711,7 +711,7 @@
       "sha256": "ca8bcf4c1f946def902a8df13f036e1be7b6282cfc280e553f63774323ab68df",
       "page_count": 32,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:42Z"
+      "retrieved_utc": "2026-11-23T16:55:49Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2023_1_Hindi.pdf",
@@ -728,7 +728,7 @@
       "sha256": "ac5916f05cc768c8065bf54d4b1cbb07688881a5734303c68b7639796c21c963",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:43Z"
+      "retrieved_utc": "2026-11-23T16:55:50Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2023_2_Hindi.pdf",
@@ -745,7 +745,7 @@
       "sha256": "ca8bcf4c1f946def902a8df13f036e1be7b6282cfc280e553f63774323ab68df",
       "page_count": 32,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:44Z"
+      "retrieved_utc": "2026-11-23T16:55:51Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2024_1_English.pdf",
@@ -762,7 +762,7 @@
       "sha256": "495ee32085e1b45f5cff6446872486a024b9de340fc8e57f63924d36f6dab696",
       "page_count": 34,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:45Z"
+      "retrieved_utc": "2026-11-23T16:55:52Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2024_2_English.pdf",
@@ -779,7 +779,7 @@
       "sha256": "ca399e4f91e0e4f0cc78f0bd383a00d1b2d4fd6a40b44e01874efc45ec17e8ac",
       "page_count": 26,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:46Z"
+      "retrieved_utc": "2026-11-23T16:55:53Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2024_1_Hindi.pdf",
@@ -796,7 +796,7 @@
       "sha256": "495ee32085e1b45f5cff6446872486a024b9de340fc8e57f63924d36f6dab696",
       "page_count": 34,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:47Z"
+      "retrieved_utc": "2026-11-23T16:55:54Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2024_2_Hindi.pdf",
@@ -813,7 +813,7 @@
       "sha256": "ca399e4f91e0e4f0cc78f0bd383a00d1b2d4fd6a40b44e01874efc45ec17e8ac",
       "page_count": 26,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:48Z"
+      "retrieved_utc": "2026-11-23T16:55:55Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2025_1_English.pdf",
@@ -830,7 +830,7 @@
       "sha256": "eb95db7039553cf5cc3b3b8c0ffc29861b5c60bad98db3e35a898b08af91c345",
       "page_count": 36,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:49Z"
+      "retrieved_utc": "2026-11-23T16:55:56Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2025_2_English.pdf",
@@ -847,7 +847,7 @@
       "sha256": "a3401a31c97eddee354f1c86f2255324846a49957eb42371e2d5fa353748c734",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:50Z"
+      "retrieved_utc": "2026-11-23T16:55:57Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2025_1_Hindi.pdf",
@@ -864,7 +864,7 @@
       "sha256": "eb95db7039553cf5cc3b3b8c0ffc29861b5c60bad98db3e35a898b08af91c345",
       "page_count": 36,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:51Z"
+      "retrieved_utc": "2026-11-23T16:55:58Z"
     },
     {
       "url": "https://jeeadv.ac.in/past_qps/2025_2_Hindi.pdf",
@@ -881,7 +881,7 @@
       "sha256": "a3401a31c97eddee354f1c86f2255324846a49957eb42371e2d5fa353748c734",
       "page_count": 24,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:52Z"
+      "retrieved_utc": "2026-11-23T16:55:59Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
@@ -898,7 +898,7 @@
       "sha256": "ba8b5256533e0a29e2eb71df3e322885335219d48259f4083365662f5ad7933b",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:53Z"
+      "retrieved_utc": "2026-11-23T16:56:00Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409481957146.pdf",
@@ -915,7 +915,7 @@
       "sha256": "7c9f31086094684cb7cf5ca9ce884b8991a3c19315dab282c7d320ed86eaf405",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:54Z"
+      "retrieved_utc": "2026-11-23T16:56:01Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604091916616339.pdf",
@@ -932,7 +932,7 @@
       "sha256": "1d8b98a5ebe417b5e9456996d00cf55a890ed87898919a2bbf2d580ef3685b4a",
       "page_count": 28,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:55Z"
+      "retrieved_utc": "2026-11-23T16:56:02Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409432593766.pdf",
@@ -949,7 +949,7 @@
       "sha256": "2146491216c3ef79b210b8e4e4a2ed3c7afca1e9db198d4adcc23dd346cf5fc5",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:56Z"
+      "retrieved_utc": "2026-11-23T16:56:03Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409828731207.pdf",
@@ -966,7 +966,7 @@
       "sha256": "20a14808d521007d48289171297030a4ac18710abc180bb7e3b2d23e2a0a19fb",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:57Z"
+      "retrieved_utc": "2026-11-23T16:56:04Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409829414602.pdf",
@@ -983,7 +983,7 @@
       "sha256": "876efb4250b5d8e096f28bb48d9078e39f25f1ad70473701e5c13523716588d4",
       "page_count": 30,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:58Z"
+      "retrieved_utc": "2026-11-23T16:56:05Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092007095665.pdf",
@@ -1000,7 +1000,7 @@
       "sha256": "a95fbbd91673783722fe98e0455860fac1585135d2e84e31f147cbd893226eeb",
       "page_count": 28,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:49:59Z"
+      "retrieved_utc": "2026-11-23T16:56:06Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409725707538.pdf",
@@ -1017,7 +1017,7 @@
       "sha256": "2983baca258ad15a77a4bc66968aa57239a217298a73e3f4e51caad1777368d5",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:00Z"
+      "retrieved_utc": "2026-11-23T16:56:07Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409932754345.pdf",
@@ -1034,7 +1034,7 @@
       "sha256": "079e3b7ae67b70309f22b33e37b720cba65b47c6d96760113a4302cee1122416",
       "page_count": 31,
       "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:01Z"
+      "retrieved_utc": "2026-11-23T16:56:08Z"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
@@ -1045,13 +1045,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2026.pdf",
-      "text_file": "data/paper-text/JEE-Main-2026.json",
-      "bytes": 235017,
-      "sha256": "18802eed996058f2cb937e09e468af557e0a0e41c36cae89f3014abe1c209e45",
-      "page_count": 8,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:02Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/202610241890224107.pdf",
@@ -1062,16 +1057,11 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2026.pdf",
-      "text_file": "data/paper-text/JEE-Main-2026.json",
-      "bytes": 235017,
-      "sha256": "18802eed996058f2cb937e09e468af557e0a0e41c36cae89f3014abe1c209e45",
-      "page_count": 8,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:03Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/11/202611201718701424.pdf",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/11/202611131752745450.pdf",
       "exam": "JEE Main",
       "label": "JEE Main 2026",
       "year": 2026,
@@ -1079,13 +1069,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2026.pdf",
-      "text_file": "data/paper-text/JEE-Main-2026.json",
-      "bytes": 235017,
-      "sha256": "18802eed996058f2cb937e09e468af557e0a0e41c36cae89f3014abe1c209e45",
-      "page_count": 8,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:04Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2024/10/2024102824.pdf",
@@ -1096,13 +1081,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2024.pdf",
-      "text_file": "data/paper-text/JEE-Main-2024.json",
-      "bytes": 459374,
-      "sha256": "fd385237ab9d74b136a2e8338b697df89cd1fe695c8cc61aa6e62fccb5639249",
-      "page_count": 6,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:05Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2024/11/2024111842.pdf",
@@ -1113,13 +1093,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2024.pdf",
-      "text_file": "data/paper-text/JEE-Main-2024.json",
-      "bytes": 459374,
-      "sha256": "fd385237ab9d74b136a2e8338b697df89cd1fe695c8cc61aa6e62fccb5639249",
-      "page_count": 6,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:06Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2025/01/2025012056.pdf",
@@ -1130,13 +1105,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2025.pdf",
-      "text_file": "data/paper-text/JEE-Main-2025.json",
-      "bytes": 4848342,
-      "sha256": "504466f79c9c759fdd5e7f29ba115339cdf5a1da36b951b86e23f15bc9f91e3a",
-      "page_count": 7,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:07Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023041393.pdf",
@@ -1147,13 +1117,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:08Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023041231.pdf",
@@ -1164,13 +1129,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:09Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023041066.pdf",
@@ -1181,13 +1141,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:10Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023040859.pdf",
@@ -1198,13 +1153,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:11Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023040679.pdf",
@@ -1215,13 +1165,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:12Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023040562.pdf",
@@ -1232,13 +1177,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:13Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023040335.pdf",
@@ -1249,13 +1189,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023-April.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023-April.json",
-      "bytes": 960073,
-      "sha256": "efff769090f666581d83a1102eecab54df8e2b8970eee35f2e88be4e1554ddb7",
-      "page_count": 1,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:14Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/04/2023040144.pdf",
@@ -1266,13 +1201,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023.json",
-      "bytes": 1328350,
-      "sha256": "176ded961de1ee11c1df0c7f31873f7348f6eac22538f7f5eb2f3c45dc78441d",
-      "page_count": 2,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:15Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/03/2023031574.pdf",
@@ -1283,13 +1213,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023.json",
-      "bytes": 1328350,
-      "sha256": "176ded961de1ee11c1df0c7f31873f7348f6eac22538f7f5eb2f3c45dc78441d",
-      "page_count": 2,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:16Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/03/2023031335.pdf",
@@ -1300,13 +1225,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023.json",
-      "bytes": 1328350,
-      "sha256": "176ded961de1ee11c1df0c7f31873f7348f6eac22538f7f5eb2f3c45dc78441d",
-      "page_count": 2,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:17Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/02/2023022713.pdf",
@@ -1317,13 +1237,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023.json",
-      "bytes": 1328350,
-      "sha256": "176ded961de1ee11c1df0c7f31873f7348f6eac22538f7f5eb2f3c45dc78441d",
-      "page_count": 2,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:18Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     },
     {
       "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2023/02/2023021526.pdf",
@@ -1334,30 +1249,8 @@
       "shift": null,
       "paper": null,
       "language": "English",
-      "file": "papers/JEE-Main-2023.pdf",
-      "text_file": "data/paper-text/JEE-Main-2023.json",
-      "bytes": 1328350,
-      "sha256": "176ded961de1ee11c1df0c7f31873f7348f6eac22538f7f5eb2f3c45dc78441d",
-      "page_count": 2,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:19Z"
-    },
-    {
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/11/20261119101122582.pdf",
-      "exam": "JEE Main",
-      "label": "JEE Main 2026",
-      "year": 2026,
-      "session": null,
-      "shift": null,
-      "paper": null,
-      "language": "English",
-      "file": "papers/JEE-Main-2026.pdf",
-      "text_file": "data/paper-text/JEE-Main-2026.json",
-      "bytes": 235017,
-      "sha256": "18802eed996058f2cb937e09e468af557e0a0e41c36cae89f3014abe1c209e45",
-      "page_count": 8,
-      "status": "downloaded_with_page_text",
-      "retrieved_utc": "2026-11-23T16:50:20Z"
+      "status": "rejected_not_question_paper",
+      "error": "No extractable question stems; excluded from PYQ archive"
     }
   ]
 }
