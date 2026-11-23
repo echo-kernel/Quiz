@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/import_official_papers.py'
+      - 'scripts/build_question_bank.py'
       - '.github/workflows/import-papers.yml'
   workflow_dispatch:
   schedule:
