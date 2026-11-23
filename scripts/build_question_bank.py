@@ -46,11 +46,11 @@ def order_key(q):
     # Chronological paper order: year, month/session, exam day, shift, paper, question.
     label=q.get("paper_label","")
     month_names={m.lower():i for i,m in enumerate(calendar.month_name) if m}
-    mm=re.search(r"-(January|February|March|April|May|June|July|August|September|October|November|December)-",label,re.I)
+    mm=re.search(r"(?:^|[-\\s])(January|February|March|April|May|June|July|August|September|October|November|December)(?:[-\\s]|$)",label,re.I)
     month=month_names.get(mm.group(1).lower(),0) if mm else 0
-    dm=re.search(r"-(\\d{1,2})-(?:April|January|February|March|May|June|July|August|September|October|November|December)-Shift-",label,re.I)
+    dm=re.search(r"(?:^|[-\\s])(\d{1,2})[-\\s](?:April|January|February|March|May|June|July|August|September|October|November|December)[-\\s]Shift[-\\s]",label,re.I)
     day=int(dm.group(1)) if dm else 0
-    sm=re.search(r"Shift-(\\d+)",label,re.I)
+    sm=re.search(r"Shift[-\\s](\d+)",label,re.I)
     shift=int(sm.group(1)) if sm else 0
     return (q.get("year") or 0, month, day, shift, q.get("paper") or 0, q.get("question_number") or 0, q.get("paper_label",""))
 def main():
@@ -89,10 +89,12 @@ def main():
                      "needs_diagram_check":bool(re.search(r"\b(figure|shown below|given below|as shown|diagram)\b",stem,re.I))}
                 allq.append(rec)
                 if options:stats["with_options"]+=1
-    allq.sort(key=order_key)\n    stats["questions"]=len(allq)
+    allq.sort(key=order_key)
+    stats["questions"]=len(allq)
     stats["empty_files"]=sum(1 for f in TEXT.glob("*.json") if not any(q["paper_label"]==f.stem.replace("-"," ") for q in allq))
     OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps({"schema_version":2,"generated_by":"scripts/build_question_bank.py",\n      "ordering":"JEE Main: year, session month, exam date, shift, question number; JEE Advanced: year, paper 1 then paper 2, question number.",
+    OUT.write_text(json.dumps({"schema_version":2,"generated_by":"scripts/build_question_bank.py",
+      "ordering":"JEE Main: year, session month, exam date, shift, question number; JEE Advanced: year, paper 1 then paper 2, question number.",
       "policy":"Question text is extracted from official-source PDFs. Answers are not supplied unless verified against official answer keys.",
       "stats":stats,"questions":allq},ensure_ascii=False),encoding="utf-8")
     print(json.dumps(stats))
