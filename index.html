@@ -99,3 +99,4 @@ window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installProm
 $("#installApp").onclick=async()=>{if(!installPrompt){alert("In Chrome, open the ⋮ menu and choose Install app or Add to Home screen.");return}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$("#installApp").classList.add("hidden")};
 if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script></body></html>
+<!-- Trigger Pages deployment after official paper import. -->
