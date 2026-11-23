@@ -56,9 +56,9 @@ def discover_advanced():
         if not href.lower().split("?")[0].endswith(".pdf"):
             continue
         filename = urlparse(href).path.rsplit("/", 1)[-1]
-        if re.search(r"_Hindi\\.pdf$", filename, re.I):
+        if re.search(r"_Hindi\.pdf$", filename, re.I):
             continue
-        year_match = re.search(r"/(20\\d{2}|200[7-9]|201\\d)_([12])(?:_English)?\\.pdf$", href, re.I)
+        year_match = re.search(r"/(20\d{2}|200[7-9]|201\d)_([12])(?:_English)?\.pdf$", href, re.I)
         if not year_match:
             continue
         year, paper_no = int(year_match.group(1)), int(year_match.group(2))
@@ -196,13 +196,13 @@ if __name__ == "__main__":
             row = a.find_parent("tr")
             context = " ".join(row.stripped_strings) if row else " ".join(a.parent.stripped_strings) if a.parent else a.get_text(" ", strip=True)
             combined = context + " " + a.get_text(" ", strip=True)
-            if not re.search(r"\\bB\\s*Tech\\b|B\\.E\\./B\\.Tech", combined, re.I):
+            if not re.search(r"\bB\s*Tech\b|B\.E\./B\.Tech", combined, re.I):
                 continue
-            if re.search(r"B\\s*Arch|B\\s*Planning", combined, re.I):
+            if re.search(r"B\s*Arch|B\s*Planning", combined, re.I):
                 continue
-            ym = re.search(r"\\b(20\\d{2})\\b", combined)
-            dm = re.search(r"(\\d{1,2})(?:st|nd|rd|th)?\\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)", combined, re.I)
-            sm = re.search(r"Shift\\s*([12])", combined, re.I)
+            ym = re.search(r"\b(20\d{2})\b", combined)
+            dm = re.search(r"(\d{1,2})(?:st|nd|rd|th)?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)", combined, re.I)
+            sm = re.search(r"Shift\s*([12])", combined, re.I)
             if not (ym and dm and sm):
                 continue
             year_found = int(ym.group(1))
