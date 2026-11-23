@@ -32,7 +32,7 @@ let stats=JSON.parse(localStorage.getItem("jp_stats")||'{"attempts":0,"correct":
 let pct=JSON.parse(localStorage.getItem("jp_pct")||"[]"),session=null,practiceIndex=0,practiceSet=[];
 function save(){localStorage.setItem("jp_bank",JSON.stringify(bank));localStorage.setItem("jp_stats",JSON.stringify(stats));localStorage.setItem("jp_pct",JSON.stringify(pct))}
 function go(tab){$$(".page").forEach(x=>x.classList.toggle("hidden",x.id!==tab));$$("#nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===tab));if(tab==="home")dashboard();if(tab==="analytics")analytics();if(tab==="papers")library()}
-$("#nav").forEach(nav=>nav.addEventListener("click",e=>{let b=e.target.closest("button[data-tab]");if(b)go(b.dataset.tab)}));
+$("#nav").addEventListener("click",e=>{let b=e.target.closest("button[data-tab]");if(b)go(b.dataset.tab)});
 $$("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
 function dashboard(){ $("#attempted").textContent=stats.attempts;$("#accuracy").textContent=stats.attempts?Math.round(stats.correct/stats.attempts*100)+"%":"—";$("#completed").textContent=stats.tests.length;$("#streak").textContent=stats.days+" days"}
 function filtered(){let s=$("#practiceSubject").value;return bank.filter(q=>s==="All"||q.subject===s)}
