@@ -62,57 +62,6 @@ def discover_advanced():
                       f"JEE Advanced {year} Paper {paper_no} English",
                       year, paper=paper_no, language="English")
 
-def discover_main():
-    # NTA's currently public B.E./B.Tech papers for all nine April 2026 shifts.
-    seeds = [
-      ("2 April Shift 1","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",2,1),
-      ("2 April Shift 2","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409481957146.pdf",2,2),
-      ("4 April Shift 1","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604091916616339.pdf",4,1),
-      ("4 April Shift 2","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409432593766.pdf",4,2),
-      ("5 April Shift 1","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409828731207.pdf",5,1),
-      ("5 April Shift 2","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409829414602.pdf",5,2),
-      ("6 April Shift 1","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092007095665.pdf",6,1),
-      ("6 April Shift 2","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409725707538.pdf",6,2),
-      ("8 April Shift 2","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409932754345.pdf",8,2),
-    ]
-    for label, url, day, shift in seeds:
-        add_candidate(url, "JEE Main", f"JEE Main 2026 {label}", 2026, "April", shift)
-
-    # Crawl official NTA question-paper pages. Import only B.Tech rows, not B.Arch/B.Planning.
-    for year in (2025, 2024, 2023, 2022, 2021):
-        archive = f"https://jeemain.nta.nic.in/question-papers-{year}/"
-        try:
-            soup = BeautifulSoup(page(archive), "html.parser")
-        except Exception as error:
-            print(f"NOTICE: official NTA question-paper page {year} unavailable: {error}")
-            continue
-        for anchor in soup.find_all("a", href=True):
-            href = urljoin(archive, anchor["href"]).split("#")[0]
-            if not href.lower().split("?")[0].endswith(".pdf") or not official(href):
-                continue
-            row = anchor.find_parent("tr")
-            context = " ".join(row.stripped_strings) if row else (
-                " ".join(anchor.parent.stripped_strings) if anchor.parent else anchor.get_text(" ", strip=True))
-            combined = context + " " + anchor.get_text(" ", strip=True)
-            if not re.search(r"\bB\s*Tech\b|B\.E\./B\.Tech", combined, re.I):
-                continue
-            if re.search(r"B\s*Arch|B\s*Planning", combined, re.I):
-                continue
-            year_match = re.search(r"\b(20\d{2})\b", combined)
-            date_match = re.search(
-                r"(\d{1,2})(?:st|nd|rd|th)?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)",
-                combined, re.I)
-            shift_match = re.search(r"Shift\s*([12])", combined, re.I)
-            if not (year_match and date_match and shift_match):
-                continue
-            found_year = int(year_match.group(1))
-            month = date_match.group(2).title()
-            month = {"Jan":"January","Feb":"February","Mar":"March","Apr":"April","Jun":"June",
-                     "Jul":"July","Aug":"August","Sep":"September","Sept":"September",
-                     "Oct":"October","Nov":"November","Dec":"December"}.get(month, month)
-            day, shift = int(date_match.group(1)), int(shift_match.group(1))
-            label = f"JEE Main {found_year} {day} {month} Shift {shift}"
-            add_candidate(href, "JEE Main", label, found_year, month, shift)
 
 def download_and_extract(item):
     global total_bytes
@@ -196,13 +145,16 @@ def download_and_extract(item):
         print(f"SKIP {item['label']}: {error}")
 
 def main():
-    # Remove all Hindi files and old mislabelled files from earlier importer versions.
+    # This phase is JEE Advanced only: remove Hindi and all JEE Main artifacts.
+    for stale in PAPERS.glob("JEE-Main-*.pdf"):
+        stale.unlink(missing_ok=True)
+    for stale in TEXT.glob("JEE-Main-*.json"):
+        stale.unlink(missing_ok=True)
     for stale in PAPERS.glob("*Hindi*.pdf"):
         stale.unlink(missing_ok=True)
     for stale in TEXT.glob("*Hindi*.json"):
         stale.unlink(missing_ok=True)
     discover_advanced()
-    discover_main()
     print(f"Discovered {len(records)} English official candidate PDFs")
     for item in records:
         download_and_extract(item)
@@ -210,7 +162,7 @@ def main():
     manifest = {
         "schema_version": 2,
         "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "policy": "English-only official-source PDFs. OCR/native text is unverified transcription; answers are not included.",
+        "policy": "JEE Advanced English-only official-source PDFs. No JEE Main or Hindi papers. OCR/native text is unverified transcription; answers are not included.",
         "count_downloaded": sum(x.get("status") == "downloaded_with_page_text" for x in records),
         "papers": records
     }
