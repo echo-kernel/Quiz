@@ -48,23 +48,124 @@ def page(url):
     return r.text
 
 def discover_advanced():
+    # The official archive lists English and Hindi links in the same table row.
+    # Determine language from the actual PDF URL, never from the surrounding row.
     soup = BeautifulSoup(page("https://jeeadv.ac.in/archive.html"), "html.parser")
     for a in soup.find_all("a", href=True):
-        href = urljoin("https://jeeadv.ac.in/archive.html", a["href"])
+        href = urljoin("https://jeeadv.ac.in/archive.html", a["href"]).split("#")[0]
         if not href.lower().split("?")[0].endswith(".pdf"):
             continue
-        context = " ".join(a.parent.parent.stripped_strings) if a.parent and a.parent.parent else a.get_text(" ", strip=True)
-        year_match = re.search(r"\b(20\d{2}|200[7-9]|201\d)\b", context + " " + href)
-        paper_match = re.search(r"paper\s*([12])", a.get_text(" ", strip=True), re.I)
-        if not year_match or not paper_match:
+        filename = urlparse(href).path.rsplit("/", 1)[-1]
+        if re.search(r"_Hindi\\.pdf$", filename, re.I):
             continue
-        year, paper_no = int(year_match.group(1)), int(paper_match.group(1))
-        language = "Hindi" if re.search(r"hindi", context, re.I) else "English"
-        label = f"JEE Advanced {year} Paper {paper_no} {language}"
-        add_candidate(href, "JEE Advanced", label, year, paper=paper_no, language=language)
+        year_match = re.search(r"/(20\\d{2}|200[7-9]|201\\d)_([12])(?:_English)?\\.pdf$", href, re.I)
+        if not year_match:
+            continue
+        year, paper_no = int(year_match.group(1)), int(year_match.group(2))
+        label = f"JEE Advanced {year} Paper {paper_no} English"
+        add_candidate(href, "JEE Advanced", label, year, paper=paper_no, language="English")
 
-def discover_main():
-    # Publicly listed 2026 NTA documents; older NTA papers may require candidate login.
+def download_and_extract(item):
+    global total_bytes
+    url = item["url"]
+    name = safe_name(item["label"]) + ".pdf"
+    path = PAPERS / name
+    text_path = TEXT / (path.stem + ".json")
+    try:
+        # Reuse a previously downloaded official PDF and its page text.
+        if path.exists() and text_path.exists() and path.read_bytes()[:5] == b"%PDF-":
+            doc = fitz.open(path)
+            size = path.stat().st_size
+            item.update({"file": str(path.relative_to(ROOT)), "text_file": str(text_path.relative_to(ROOT)),
+                         "bytes": size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                         "page_count": len(doc), "status": "downloaded_with_page_text",
+                         "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+            doc.close()
+            print(f"REUSE {name}")
+            return
+        r = SESSION.get(url, timeout=90, stream=True)
+        r.raise_for_status()
+        ctype = r.headers.get("Content-Type", "").lower()
+        length = int(r.headers.get("Content-Length") or 0)
+        if length > MAX_FILE or total_bytes + length > MAX_TOTAL:
+            raise RuntimeError(f"size limit reached ({length} bytes)")
+        h = hashlib.sha256()
+        size = 0
+        with path.open("wb") as f:
+            for chunk in r.iter_content(1024 * 256):
+                if not chunk: continue
+                size += len(chunk)
+                if size > MAX_FILE or total_bytes + size > MAX_TOTAL:
+                    raise RuntimeError("download exceeded configured size limit")
+                h.update(chunk); f.write(chunk)
+        if size < 1000 or path.read_bytes()[:5] != b"%PDF-":
+            path.unlink(missing_ok=True)
+            raise RuntimeError(f"response was not a PDF (content-type={ctype})")
+        total_bytes += size
+        doc = fitz.open(path)
+        pages = []
+        for i, p in enumerate(doc):
+            native = p.get_text("text").strip()
+            method = "native"
+            # Many official JEE PDFs contain scanned question pages. OCR those pages
+            # instead of silently saving blank text. OCR remains unverified source text.
+            if len(native) < 120 or (item["exam"] == "JEE Main" and "Question Number" in native):
+                try:
+                    tp = p.get_textpage_ocr(language="eng", dpi=180, full=True)
+                    ocr_text = p.get_text("text", textpage=tp).strip()
+                    if len(ocr_text) > len(native):
+                        native, method = ocr_text, "tesseract_ocr_unverified"
+                except Exception as ocr_error:
+                    print(f"NOTICE: OCR page {i+1} failed for {item['label']}: {ocr_error}")
+            pages.append({"page": i + 1, "text": native, "extraction": method})
+        # Reject NTA notices, FAQs, information bulletins and response-sheet exports.
+        # A real question paper must contain actual question stems, not only exam metadata.
+        if item["exam"] == "JEE Main":
+            joined = "\n".join(p.get("text", "") for p in pages)
+            stems = re.findall(r"(?im)^\s*Q\s*\.?\s*\d+\b", joined)
+            if len(stems) < 5:
+                doc.close()
+                path.unlink(missing_ok=True)
+                text_path.unlink(missing_ok=True)
+                item.update({"status": "rejected_not_question_paper",
+                             "error": "No extractable question stems; excluded from PYQ archive"})
+                print(f"REJECT non-question document: {item['label']}")
+                return
+        text_path.write_text(json.dumps({"source": url, "pages": pages}, ensure_ascii=False), encoding="utf-8")
+        item.update({"file": str(path.relative_to(ROOT)), "text_file": str(text_path.relative_to(ROOT)),
+                     "bytes": size, "sha256": h.hexdigest(), "page_count": len(doc),
+                     "status": "downloaded_with_page_text", "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+        doc.close()
+        print(f"OK {name} ({size} bytes, {len(pages)} pages)")
+    except Exception as e:
+        item.update({"status": "unavailable", "error": str(e)})
+        print(f"SKIP {item['label']}: {e}")
+
+def main():
+    # Remove Hindi PDFs/text from earlier runs; this archive is English-only.
+    for stale in PAPERS.glob("*Hindi*.pdf"):
+        stale.unlink(missing_ok=True)
+    for stale in TEXT.glob("*Hindi*.json"):
+        stale.unlink(missing_ok=True)
+    discover_advanced()
+    discover_main()
+    print(f"Discovered {len(records)} official candidate PDFs")
+    for item in records:
+        download_and_extract(item)
+        time.sleep(1.0)
+    manifest = {"schema_version": 1, "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                "policy": "Official-source PDFs only. Native text and OCR page text are unverified source transcription, not a verified question/answer database.",
+                "count_downloaded": sum(x.get("status") == "downloaded_with_page_text" for x in records),
+                "papers": records}
+    (ROOT / "data" / "papers.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    if not manifest["count_downloaded"]:
+        print("ERROR: No official PDF was downloaded; inspect the source errors above.")
+        sys.exit(2)
+    print(f"Saved {manifest['count_downloaded']} PDFs and page-text files.")
+
+if __name__ == "__main__":
+    main()def discover_main():
+    # Direct NTA links for every 2026 Session 2 B.E./B.Tech shift.
     seeds = [
       ("2 April Shift 1","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",2,1),
       ("2 April Shift 2","https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260409481957146.pdf",2,2),
@@ -78,26 +179,38 @@ def discover_main():
     ]
     for label, url, day, shift in seeds:
         add_candidate(url, "JEE Main", f"JEE Main 2026 {label}", 2026, "April", shift)
-    # Discover any PDFs directly linked by the official archive page.
-    for archive in ("https://jeemain.nta.nic.in/document-category/archive/", "https://jeemain.nta.nic.in/sitemap/"):
+
+    # NTA's public Question Papers pages expose the 2025 B.E./B.Tech papers.
+    # Only engineering Paper 1 rows are imported; B.Arch/B.Planning are excluded.
+    for year in (2025, 2024, 2023, 2022, 2021):
+        archive = f"https://jeemain.nta.nic.in/question-papers-{year}/"
         try:
             soup = BeautifulSoup(page(archive), "html.parser")
-            for a in soup.find_all("a", href=True):
-                href = urljoin(archive, a["href"])
-                if not href.lower().split("?")[0].endswith(".pdf") or not official(href):
-                    continue
-                context = " ".join(a.parent.stripped_strings) if a.parent else a.get_text(" ", strip=True)
-                combined = context + " " + a.get_text(" ", strip=True) + " " + href
-                ym = re.search(r"\b(20\d{2})\b", combined)
-                if not ym:
-                    continue
-                year = int(ym.group(1))
-                sm = re.search(r"(January|February|March|April|May|June|July|August|September|October|November|December)", combined, re.I)
-                dm = re.search(r"(?:shift|s)\s*([12])", combined, re.I)
-                label = f"JEE Main {year}" + (f" {sm.group(1)}" if sm else "") + (f" Shift {dm.group(1)}" if dm else "")
-                add_candidate(href, "JEE Main", label, year, sm.group(1) if sm else None, int(dm.group(1)) if dm else None)
         except Exception as e:
-            print(f"NOTICE: could not read {archive}: {e}")
+            print(f"NOTICE: could not read official NTA question-paper page {year}: {e}")
+            continue
+        for a in soup.find_all("a", href=True):
+            href = urljoin(archive, a["href"]).split("#")[0]
+            if not href.lower().split("?")[0].endswith(".pdf") or not official(href):
+                continue
+            row = a.find_parent("tr")
+            context = " ".join(row.stripped_strings) if row else " ".join(a.parent.stripped_strings) if a.parent else a.get_text(" ", strip=True)
+            combined = context + " " + a.get_text(" ", strip=True)
+            if not re.search(r"\\bB\\s*Tech\\b|B\\.E\\./B\\.Tech", combined, re.I):
+                continue
+            if re.search(r"B\\s*Arch|B\\s*Planning", combined, re.I):
+                continue
+            ym = re.search(r"\\b(20\\d{2})\\b", combined)
+            dm = re.search(r"(\\d{1,2})(?:st|nd|rd|th)?\\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)", combined, re.I)
+            sm = re.search(r"Shift\\s*([12])", combined, re.I)
+            if not (ym and dm and sm):
+                continue
+            year_found = int(ym.group(1))
+            month = dm.group(2).title()
+            month = {"Jan":"January","Feb":"February","Mar":"March","Apr":"April","Jun":"June","Jul":"July","Aug":"August","Sep":"September","Sept":"September","Oct":"October","Nov":"November","Dec":"December"}.get(month, month)
+            day, shift = int(dm.group(1)), int(sm.group(1))
+            label = f"JEE Main {year_found} {day} {month} Shift {shift}"
+            add_candidate(href, "JEE Main", label, year_found, month, shift)
 
 def download_and_extract(item):
     global total_bytes
