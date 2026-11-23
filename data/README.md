@@ -1,0 +1,1 @@
+Keep verified question-bank and percentile datasets here. Only add materials that may legally be redistributed. Include source URLs, paper year/session/shift, answer-key verification status, and licence/permission details. Do not commit private coaching PDFs or copyrighted content without permission.
