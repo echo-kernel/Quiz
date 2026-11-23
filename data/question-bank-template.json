@@ -1,0 +1,28 @@
+{
+  "title": "JEE Main 2025 · Jan 22 · Shift 1",
+  "exam": "main",
+  "year": 2025,
+  "session": "January",
+  "shift": "Shift 1",
+  "duration": 180,
+  "questions": [
+    {
+      "id": "q001",
+      "subject": "Physics",
+      "chapter": "Units and dimensions",
+      "type": "single",
+      "text": "Question text",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": 0,
+      "marks": 4,
+      "negative": 1,
+      "explanation": "Verified explanation",
+      "source": "Publisher name and source URL"
+    }
+  ]
+}
