@@ -28,7 +28,7 @@ def clean(s):
     s=re.sub(r"JEE\s*\(?Advanced\)?\s*20\d{2}[^\n]*","",s,flags=re.I)
     s=re.sub(r"\n\s*\d+\s*/\s*\d+\s*\n","\n",s)
     return re.sub(r"\n{3,}","\n\n",s).strip()
-def parse_block(block):
+def parse_block(block, page_text):
     # Options are only split when they occur as line-start labels.
     matches=list(opt.finditer(block))
     stem=block[:matches[0].start()].strip() if matches else block.strip()
@@ -40,7 +40,7 @@ def parse_block(block):
             if val: options.append({"label":m.group(1),"text":val})
     # Remove trailing paper instructions and preserve question content.
     if not stem or len(stem)<12:return None
-    qtype="single" if options else "numerical"
+    qtype=("multiple" if options and re.search(r"ONE OR MORE THAN ONE|MORE THAN ONE OF THESE",page_text,re.I) else "single") if options else "numerical"
     return stem,options,qtype
 def main():
     allq=[]; seen=set(); stats={"files":0,"questions":0,"with_options":0,"empty_files":0}
@@ -60,7 +60,7 @@ def main():
             for i,m in enumerate(starts):
                 end=starts[i+1].start() if i+1<len(starts) else len(raw)
                 block=raw[m.end():end].strip()
-                parsed=parse_block(block)
+                parsed=parse_block(block,raw)
                 if not parsed:continue
                 stem,options,qtype=parsed
                 number=int(m.group(1))
