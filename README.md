@@ -1,34 +1,40 @@
-# jeepre — JEE preparation app
+# jeepre — JEE Main & Advanced preparation app
 
-A mobile-friendly, browser-based JEE Main + JEE Advanced preparation workspace.
+A mobile-friendly, offline-first starter web app for JEE preparation.
 
-## Current build
-- CBT-style timed test screen with question palette, navigation, answer clearing and mark-for-review.
-- JEE Main-style +4/-1 scoring defaults; imported question banks can override marks and negative marks per question.
-- JEE Advanced-compatible per-question marking fields (Advanced marking schemes vary by year and section).
-- Result review with explanations and subject breakdown.
-- Local test history and dashboard analytics (stored in the browser's localStorage).
-- Import question banks as JSON; download the template from inside the app.
-- Shift-specific percentile CSV importer with interpolation only inside the supplied score range. It refuses to guess when exact shift data is missing.
-- Marks calculator, simple study target planner, and curated official/coaching source links.
+## Current MVP
+- Dashboard with local progress counters
+- Subject-filtered practice set with explanations
+- Timed CBT-style test flow, question palette, answer selection, clear response, mark-for-review and submit
+- JSON question-bank import with source/verification metadata
+- Test history and basic analytics
+- Shift-specific JEE Main marks-to-percentile interpolation only after importing sourced reference points
+- Local browser storage
 
 ## Run
-Open `index.html` in a modern browser, or enable GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root). No build step or server is required.
+Open `index.html` in a browser, or deploy this repository with GitHub Pages.
 
-## Paper and data policy
-Built-in questions are original interface-demo questions, not PYQs. Use the paper-source library for official NTA/JEE Advanced archives and publisher-hosted ALLEN/BYJU'S resources. Import only files/data you are permitted to use. The app does not bypass login walls or republish copyrighted coaching compilations. Prefer official final answer keys; record year, session, date, shift, language, question IDs, marking scheme and source URL for every imported paper.
+## Data and copyright policy
+This repository does not claim to contain all JEE Main or JEE Advanced previous-year papers. Populate it with:
+1. Officially released question papers and answer keys from NTA / JEE Advanced (IIT) websites.
+2. Third-party question banks only where redistribution or use is permitted by their terms/licence, or with permission.
+3. User-provided files the user is authorized to use.
 
-## Question bank JSON format
-See `data/question-bank-template.json`. Each paper has a `title`, `exam`, optional `year/session/shift/duration`, and `questions`. Each question needs `text`, `subject`, `answer`; MCQs also need `options`. Optional fields: `id`, `chapter`, `type` (`single` or `numeric`), `marks`, `negative`, `tolerance`, `explanation`, `source`.
+Allen, BYJU'S and other coaching resources can be researched as discovery/reference sources. Do not scrape behind logins, bypass access controls, or republish copyrighted coaching modules without permission. Verify questions and answers against official papers wherever possible. Keep a source URL, year, session, shift, and verification status for every imported question.
 
-## Percentile CSV
-See `data/percentile-template.csv`. The app requires rows for the exact year + session + shift. Percentiles depend on shift normalization; marks alone do not produce a universal percentile. Estimates are interpolations from supplied data, not official predictions.
+## Percentile accuracy
+JEE Main percentile is shift-normalized and cannot be reliably derived from raw marks alone using one universal formula. The estimator requires multiple verified marks/percentile reference points for the exact shift and interpolates between them. It is an estimate, not an NTA score or guarantee. Do not mix shifts or sessions. Advanced does not use the Main percentile estimator.
 
-## Roadmap
-1. Build a verified paper catalogue and question-level source/answer-key provenance.
-2. Convert permitted PDFs/response sheets into structured question banks; human-check every extraction and key.
-3. Add full-length year/shift simulations and exact year-specific JEE Advanced marking schemes.
-4. Add chapter/topic tags, spaced revision, bookmarks, mistake notebook and custom tests.
-5. Add optional cloud sync/authentication after deciding on a backend.
+CSV schema: `shift,marks,percentile,source`
 
-Not affiliated with NTA, IITs, ALLEN or BYJU'S.
+## Question-bank JSON schema
+See the in-app template. Single-correct answer index is zero-based. Preserve original paper marking rules when adding more question types. The initial CBT scoring is a simple +4 / -1 practice preset; it is not a universal JEE marking scheme.
+
+## Planned next stages
+- Full official paper archive with metadata and paper viewer
+- Accurate question-type-specific JEE Main / Advanced marking schemes
+- Multi-correct, numerical, matrix-match and partial-credit grading
+- Section-specific timers and instructions
+- Topic mastery, weak-area recommendations, revision queue and error notebook
+- PWA installability, cloud sync and secure accounts
+- Verified shift-wise percentile dataset with source audit trail
