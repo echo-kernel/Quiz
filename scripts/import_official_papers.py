@@ -155,8 +155,8 @@ def download_and_extract(item):
         # Reject NTA notices, FAQs, information bulletins and response-sheet exports.
         # A real question paper must contain actual question stems, not only exam metadata.
         if item["exam"] == "JEE Main":
-            joined = "\\n".join(p.get("text", "") for p in pages)
-            stems = re.findall(r"(?im)^\\s*Q\\s*\\.?\\s*\\d+\\b", joined)
+            joined = "\n".join(p.get("text", "") for p in pages)
+            stems = re.findall(r"(?im)^\s*Q\s*\.?\s*\d+\b", joined)
             if len(stems) < 5:
                 doc.close()
                 path.unlink(missing_ok=True)
