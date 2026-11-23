@@ -193,7 +193,7 @@ function jpInitWorkspace(){jpRenderSyllabus();jpRenderDeck();jpRenderTasks();jpR
 
 
 /* Question-bank import and exam-faithful CBT status / timing */
-$("#importQuestions").onclick=async()=>{const file=$("#questionImport").files[0];if(!file){$("#importStatus").textContent="Choose a JSON file first.";return}try{const arr=JSON.parse(await file.text());if(!Array.isArray(arr)||!arr.length)throw Error("Expected a non-empty JSON array.");const valid=arr.filter(q=>q&&typeof q.question==="string"&&["Physics","Chemistry","Mathematics"].includes(q.subject)&&["single","multiple","integer","matrix","paragraph"].includes(q.type||"single")&&q.answer!==undefined);if(!valid.length)throw Error("No valid questions found. Check required fields and question types.");const incoming=valid.map((q,i)=>({...q,id:q.id||"user-"+Date.now()+"-"+i,options:q.options||[],source:q.source||"User-imported question"}));bank=bank.filter(q=>!String(q.id).startsWith("user-")).concat(incoming);save();$("#importStatus").textContent="Imported "+incoming.length+" questions. Total bank: "+bank.length+".";};catch(e){$("#importStatus").textContent="Import failed: "+e.message}};
+$("#importQuestions").onclick=async()=>{const file=$("#questionImport").files[0];if(!file){$("#importStatus").textContent="Choose a JSON file first.";return}try{const arr=JSON.parse(await file.text());if(!Array.isArray(arr)||!arr.length)throw Error("Expected a non-empty JSON array.");const valid=arr.filter(q=>q&&typeof q.question==="string"&&["Physics","Chemistry","Mathematics"].includes(q.subject)&&["single","multiple","integer","matrix","paragraph"].includes(q.type||"single")&&q.answer!==undefined);if(!valid.length)throw Error("No valid questions found. Check required fields and question types.");const incoming=valid.map((q,i)=>({...q,id:q.id||"user-"+Date.now()+"-"+i,options:q.options||[],source:q.source||"User-imported question"}));bank=bank.filter(q=>!String(q.id).startsWith("user-")).concat(incoming);save();$("#importStatus").textContent="Imported "+incoming.length+" questions. Total bank: "+bank.length+".";}catch(e){$("#importStatus").textContent="Import failed: "+e.message}};
 function jpEqualAnswer(a,b){if(Array.isArray(a)&&Array.isArray(b))return a.length===b.length&&a.every((v,i)=>String(v)===String(b[i]));if(Array.isArray(a)||Array.isArray(b))return false;return String(a).trim().toLowerCase()===String(b).trim().toLowerCase()}
 function jpAnswerLabel(q,a){if(a===undefined||a===null||a==="")return "Not answered";if(Array.isArray(a))return a.map(x=>String(x)).join(", ");if(q.type==="single")return String.fromCharCode(65+(+a));return String(a)}
 function jpType(q){return q.type==="paragraph"?(q.responseType||"single"):(q.type||"single")}
@@ -274,7 +274,8 @@ if(!jpCards.length){
  {id:"seed-12",front:"Determinant of a 2×2 matrix",back:"For [[a,b],[c,d]], determinant = ad − bc.",subject:"Mathematics",due:Date.now(),interval:0}
  ];jpSave("cards",jpCards);
 }
-\ndashboard();library();jpInitWorkspace();
+
+dashboard();library();jpInitWorkspace();
 let installPrompt=null;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;$("#installApp").classList.remove("hidden")});
 $("#installApp").onclick=async()=>{if(!installPrompt){alert("In Chrome, open the ⋮ menu and choose Install app or Add to Home screen.");return}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$("#installApp").classList.add("hidden")};
