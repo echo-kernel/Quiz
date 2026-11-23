@@ -1,6 +1,6 @@
 # jeepre paper-source directory
 
-Use the following publisher pages to locate papers. The app links to these sources; it does not mirror their copyrighted PDFs.
+Official-source import workflow: `.github/workflows/import-papers.yml` runs `scripts/import_official_papers.py`. It downloads only publicly accessible PDFs from IIT/JEE Advanced and NTA, stores them in `papers/`, and extracts page-level searchable text to `data/paper-text/`. Candidate-login-only papers are intentionally skipped.
 
 | Source | Resource | URL |
 |---|---|---|
@@ -10,6 +10,12 @@ Use the following publisher pages to locate papers. The app links to these sourc
 | ALLEN | 2022 previous-year papers | https://news.allen.in/download-jee-main-previous-years-question-papers-with-solutions-chapter-wise/ |
 | BYJU'S | JEE Main question papers | https://byjus.com/jee/jee-main-question-paper/ |
 | BYJU'S | Chapter-wise JEE Main questions | https://byjus.com/jee/jee-main-chapter-wise-questions-and-solutions/ |
+
+## Official sources
+
+- JEE Advanced archive: https://jeeadv.ac.in/archive.html
+- JEE Main archive: https://jeemain.nta.nic.in/document-category/archive/
+- JEE Main sitemap: https://jeemain.nta.nic.in/sitemap/
 
 ## Ingestion and verification checklist
 
