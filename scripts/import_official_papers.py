@@ -160,7 +160,7 @@ def main():
         time.sleep(1.0)
     manifest = {"schema_version": 1, "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                 "policy": "Official-source PDFs only. Native text and OCR page text are unverified source transcription, not a verified question/answer database.",
-                "count_downloaded": sum(x.get("status") == "downloaded_text_extracted" for x in records),
+                "count_downloaded": sum(x.get("status") == "downloaded_with_page_text" for x in records),
                 "papers": records}
     (ROOT / "data" / "papers.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     if not manifest["count_downloaded"]:
