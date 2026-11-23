@@ -102,15 +102,27 @@ def discover_main():
 def download_and_extract(item):
     global total_bytes
     url = item["url"]
+    name = safe_name(item["label"]) + ".pdf"
+    path = PAPERS / name
+    text_path = TEXT / (path.stem + ".json")
     try:
+        # Reuse a previously downloaded official PDF and its page text.
+        if path.exists() and text_path.exists() and path.read_bytes()[:5] == b"%PDF-":
+            doc = fitz.open(path)
+            size = path.stat().st_size
+            item.update({"file": str(path.relative_to(ROOT)), "text_file": str(text_path.relative_to(ROOT)),
+                         "bytes": size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                         "page_count": len(doc), "status": "downloaded_with_page_text",
+                         "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+            doc.close()
+            print(f"REUSE {name}")
+            return
         r = SESSION.get(url, timeout=90, stream=True)
         r.raise_for_status()
         ctype = r.headers.get("Content-Type", "").lower()
         length = int(r.headers.get("Content-Length") or 0)
         if length > MAX_FILE or total_bytes + length > MAX_TOTAL:
             raise RuntimeError(f"size limit reached ({length} bytes)")
-        name = safe_name(item["label"]) + ".pdf"
-        path = PAPERS / name
         h = hashlib.sha256()
         size = 0
         with path.open("wb") as f:
@@ -140,7 +152,6 @@ def download_and_extract(item):
                 except Exception as ocr_error:
                     print(f"NOTICE: OCR page {i+1} failed for {item['label']}: {ocr_error}")
             pages.append({"page": i + 1, "text": native, "extraction": method})
-        text_path = TEXT / (path.stem + ".json")
         text_path.write_text(json.dumps({"source": url, "pages": pages}, ensure_ascii=False), encoding="utf-8")
         item.update({"file": str(path.relative_to(ROOT)), "text_file": str(text_path.relative_to(ROOT)),
                      "bytes": size, "sha256": h.hexdigest(), "page_count": len(doc),
