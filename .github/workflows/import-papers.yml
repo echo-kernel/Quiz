@@ -25,11 +25,13 @@ jobs:
         run: pip install requests beautifulsoup4 pymupdf
       - name: Download official papers and extract page text
         run: python scripts/import_official_papers.py
-      - name: Commit downloaded papers and searchable text
+      - name: Build question-level bank from extracted PDF text
+        run: python scripts/build_question_bank.py
+      - name: Commit downloaded papers, text and question bank
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add papers data/papers.json data/paper-text
+          git add papers data/papers.json data/paper-text data/questions.json
           if git diff --cached --quiet; then
             echo "No new official papers to commit."
           else
