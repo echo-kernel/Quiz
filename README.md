@@ -1,6 +1,6 @@
 # jeepre — JEE Main & Advanced preparation app
 
-A mobile-friendly, offline-first starter web app for JEE preparation.
+A mobile-friendly, installable PWA starter web app for JEE preparation. It caches the app shell for offline reopening after the first successful load.
 
 ## Current MVP
 - Dashboard with local progress counters
@@ -11,8 +11,10 @@ A mobile-friendly, offline-first starter web app for JEE preparation.
 - Shift-specific JEE Main marks-to-percentile interpolation only after importing sourced reference points
 - Local browser storage
 
-## Run
-Open `index.html` in a browser, or deploy this repository with GitHub Pages.
+## Run / install
+Open `index.html` in a browser, or deploy this repository with GitHub Pages. On Android Chrome, open the deployed URL and choose **Install app** (or ⋮ → **Add to Home screen**). The manifest, SVG app icon and service worker provide installability and offline app-shell caching.
+
+GitHub Pages deployment is configured in `.github/workflows/pages.yml`. The workflow attempts to enable Pages automatically; if GitHub blocks that operation, open **Settings → Pages → Build and deployment → GitHub Actions** once, then rerun the workflow.
 
 ## Data and copyright policy
 This repository does not claim to contain all JEE Main or JEE Advanced previous-year papers. Populate it with:
