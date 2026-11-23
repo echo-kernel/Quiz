@@ -1,5 +1,10 @@
 name: Import official JEE papers
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import_official_papers.py'
+      - '.github/workflows/import-papers.yml'
   workflow_dispatch:
   schedule:
     - cron: "17 2 1 * *"
