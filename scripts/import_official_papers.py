@@ -152,6 +152,19 @@ def download_and_extract(item):
                 except Exception as ocr_error:
                     print(f"NOTICE: OCR page {i+1} failed for {item['label']}: {ocr_error}")
             pages.append({"page": i + 1, "text": native, "extraction": method})
+        # Reject NTA notices, FAQs, information bulletins and response-sheet exports.
+        # A real question paper must contain actual question stems, not only exam metadata.
+        if item["exam"] == "JEE Main":
+            joined = "\\n".join(p.get("text", "") for p in pages)
+            stems = re.findall(r"(?im)^\\s*Q\\s*\\.?\\s*\\d+\\b", joined)
+            if len(stems) < 5:
+                doc.close()
+                path.unlink(missing_ok=True)
+                text_path.unlink(missing_ok=True)
+                item.update({"status": "rejected_not_question_paper",
+                             "error": "No extractable question stems; excluded from PYQ archive"})
+                print(f"REJECT non-question document: {item['label']}")
+                return
         text_path.write_text(json.dumps({"source": url, "pages": pages}, ensure_ascii=False), encoding="utf-8")
         item.update({"file": str(path.relative_to(ROOT)), "text_file": str(text_path.relative_to(ROOT)),
                      "bytes": size, "sha256": h.hexdigest(), "page_count": len(doc),
