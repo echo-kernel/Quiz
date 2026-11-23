@@ -32,8 +32,14 @@ CSV schema: `shift,marks,percentile,source`
 ## Question-bank JSON schema
 See the in-app template. Single-correct answer index is zero-based. Preserve original paper marking rules when adding more question types. The initial CBT scoring is a simple +4 / -1 practice preset; it is not a universal JEE marking scheme.
 
+## Import workflow and limitations
+
+The importer is restricted to official IIT/JEE Advanced and NTA hosts. It respects public access, skips blocked or oversized files, and records failures instead of fabricating missing papers. The JEE Advanced official archive currently exposes 2007–2025 Paper 1 and Paper 2; JEE Main public availability varies by year/session and some historic papers are only in candidate login. The app prefers repository-local PDFs after a successful import and falls back to the existing official-source reader list otherwise.
+
+PDF page text is extracted for search/review. It is **not** automatically split into reliable question objects, options, answer keys, or worked solutions: mathematical notation, diagrams, multi-correct/numerical questions, and marking schemes need validation. Do not use raw extraction as an answer key or label unreviewed extraction as verified PYQ data.
+
 ## Planned next stages
-- Full official paper archive with metadata and paper viewer
+- Official-source paper import workflow (`.github/workflows/import-papers.yml`): scheduled monthly and manually runnable from GitHub Actions; downloads public official PDFs, stores them under `papers/`, and extracts searchable page text under `data/paper-text/`
 - Accurate question-type-specific JEE Main / Advanced marking schemes
 - Multi-correct, numerical, matrix-match and partial-credit grading
 - Section-specific timers and instructions
