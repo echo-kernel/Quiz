@@ -52,12 +52,18 @@ def discover_advanced():
         if not href.lower().split("?")[0].endswith(".pdf"):
             continue
         filename = urlparse(href).path.rsplit("/", 1)[-1]
-        if re.search(r"_Hindi\.pdf$", filename, re.I):
+        # 2019 onward has separate English/Hindi links; accept only the explicit English file.
+        # 2007–2018 archive files are the original English-only papers.
+        if re.search(r"(?:_Hindi|Hindi)\.pdf$", filename, re.I):
             continue
-        match = re.search(r"/(20\d{2}|200[7-9]|201\d)_([12])(?:_English)?\.pdf$", href, re.I)
+        match = re.fullmatch(r"(20\d{2}|200[7-9]|201\d)_([12])(?:_English)?\.pdf", filename, re.I)
         if not match:
             continue
         year, paper_no = int(match.group(1)), int(match.group(2))
+        if year >= 2019 and not re.fullmatch(r"20\d{2}_[12]_English\.pdf", filename, re.I):
+            continue
+        if year <= 2018 and not re.fullmatch(r"(?:200[7-9]|201[0-8])_[12]\.pdf", filename, re.I):
+            continue
         add_candidate(href, "JEE Advanced",
                       f"JEE Advanced {year} Paper {paper_no} English",
                       year, paper=paper_no, language="English")
@@ -121,6 +127,16 @@ def download_and_extract(item):
                 except Exception as ocr_error:
                     print(f"NOTICE: OCR page {i+1} failed for {item['label']}: {ocr_error}")
             pages.append({"page": i + 1, "text": text_value, "extraction": method})
+        # Reject any source whose extracted text contains Devanagari; never mix languages in the English bank.
+        hindi_pages = [p["page"] for p in pages if re.search(r"[\u0900-\u097F]", p.get("text", ""))]
+        if hindi_pages:
+            doc.close()
+            path.unlink(missing_ok=True)
+            text_path.unlink(missing_ok=True)
+            item.update({"status": "rejected_non_english_content",
+                         "error": "Devanagari text detected on PDF pages: " + ", ".join(map(str, hindi_pages[:12]))})
+            print(f"REJECT non-English content: {item['label']} pages={hindi_pages[:12]}")
+            return
         if item["exam"] == "JEE Main":
             joined = "\n".join(p.get("text", "") for p in pages)
             stems = re.findall(
