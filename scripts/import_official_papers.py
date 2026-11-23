@@ -125,12 +125,26 @@ def download_and_extract(item):
             raise RuntimeError(f"response was not a PDF (content-type={ctype})")
         total_bytes += size
         doc = fitz.open(path)
-        pages = [{"page": i + 1, "text": p.get_text("text").strip()} for i, p in enumerate(doc)]
+        pages = []
+        for i, p in enumerate(doc):
+            native = p.get_text("text").strip()
+            method = "native"
+            # Many official JEE PDFs contain scanned question pages. OCR those pages
+            # instead of silently saving blank text. OCR remains unverified source text.
+            if len(native) < 120:
+                try:
+                    tp = p.get_textpage_ocr(language="eng", dpi=180, full=True)
+                    ocr_text = p.get_text("text", textpage=tp).strip()
+                    if len(ocr_text) > len(native):
+                        native, method = ocr_text, "tesseract_ocr_unverified"
+                except Exception as ocr_error:
+                    print(f"NOTICE: OCR page {i+1} failed for {item['label']}: {ocr_error}")
+            pages.append({"page": i + 1, "text": native, "extraction": method})
         text_path = TEXT / (path.stem + ".json")
         text_path.write_text(json.dumps({"source": url, "pages": pages}, ensure_ascii=False), encoding="utf-8")
         item.update({"file": str(path.relative_to(ROOT)), "text_file": str(text_path.relative_to(ROOT)),
                      "bytes": size, "sha256": h.hexdigest(), "page_count": len(doc),
-                     "status": "downloaded_text_extracted", "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+                     "status": "downloaded_with_page_text", "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
         doc.close()
         print(f"OK {name} ({size} bytes, {len(pages)} pages)")
     except Exception as e:
@@ -145,7 +159,7 @@ def main():
         download_and_extract(item)
         time.sleep(1.0)
     manifest = {"schema_version": 1, "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                "policy": "Official-source PDFs only. Extracted page text is not a verified question/answer database.",
+                "policy": "Official-source PDFs only. Native text and OCR page text are unverified source transcription, not a verified question/answer database.",
                 "count_downloaded": sum(x.get("status") == "downloaded_text_extracted" for x in records),
                 "papers": records}
     (ROOT / "data" / "papers.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
