@@ -2,7 +2,7 @@
 """Convert page-level official JEE PDF text into question-level practice records.
 Answers are deliberately left null unless an official key is separately verified.
 """
-import json, re
+import json, re, calendar
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -42,6 +42,17 @@ def parse_block(block, page_text):
     if not stem or len(stem)<12:return None
     qtype=("multiple" if options and re.search(r"ONE OR MORE THAN ONE|MORE THAN ONE OF THESE",page_text,re.I) else "single") if options else "numerical"
     return stem,options,qtype
+def order_key(q):
+    # Chronological paper order: year, month/session, exam day, shift, paper, question.
+    label=q.get("paper_label","")
+    month_names={m.lower():i for i,m in enumerate(calendar.month_name) if m}
+    mm=re.search(r"-(January|February|March|April|May|June|July|August|September|October|November|December)-",label,re.I)
+    month=month_names.get(mm.group(1).lower(),0) if mm else 0
+    dm=re.search(r"-(\\d{1,2})-(?:April|January|February|March|May|June|July|August|September|October|November|December)-Shift-",label,re.I)
+    day=int(dm.group(1)) if dm else 0
+    sm=re.search(r"Shift-(\\d+)",label,re.I)
+    shift=int(sm.group(1)) if sm else 0
+    return (q.get("year") or 0, month, day, shift, q.get("paper") or 0, q.get("question_number") or 0, q.get("paper_label",""))
 def main():
     allq=[]; seen=set(); stats={"files":0,"questions":0,"with_options":0,"empty_files":0}
     for f in sorted(TEXT.glob("*.json")):
@@ -78,10 +89,10 @@ def main():
                      "needs_diagram_check":bool(re.search(r"\b(figure|shown below|given below|as shown|diagram)\b",stem,re.I))}
                 allq.append(rec)
                 if options:stats["with_options"]+=1
-    stats["questions"]=len(allq)
+    allq.sort(key=order_key)\n    stats["questions"]=len(allq)
     stats["empty_files"]=sum(1 for f in TEXT.glob("*.json") if not any(q["paper_label"]==f.stem.replace("-"," ") for q in allq))
     OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps({"schema_version":1,"generated_by":"scripts/build_question_bank.py",
+    OUT.write_text(json.dumps({"schema_version":2,"generated_by":"scripts/build_question_bank.py",\n      "ordering":"JEE Main: year, session month, exam date, shift, question number; JEE Advanced: year, paper 1 then paper 2, question number.",
       "policy":"Question text is extracted from official-source PDFs. Answers are not supplied unless verified against official answer keys.",
       "stats":stats,"questions":allq},ensure_ascii=False),encoding="utf-8")
     print(json.dumps(stats))
